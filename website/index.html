@@ -1,69 +1,1110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible"
-          content="IE=edge" />
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-          content="building a progressive web app" />
-    <meta name="author"
-          content="neb1 neuron" />
-    <title>Progressive Web App CALCULATOR</title>
-    <link rel="stylesheet"
-          href="style.css" />
-    <script src="main.js"
-            defer></script>
-    <link rel="manifest"
-          href="manifest.json" />
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible"
+            content="IE=edge" />
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+      <meta name="description"
+            content="building a progressive web app" />
+      <meta name="author"
+            content="neb1 neuron" />
+      <title>Trading App v1.0</title>
+      <link rel="icon"
+            type="image/x-icon"
+            href="/favicon.ico">
+      <link rel='stylesheet'
+            type='text/css'
+            media='screen'
+            href='main.css'>
+      <script src='declarations.js'></script>
+      <script src='./framework/forms.js'></script>
+      <script type="module"
+              src='main.js'></script>
+      <script src='fctReporting.js'></script>
+      <script src='csv.js'></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous">
+      <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+      <link rel="manifest"
+            href="manifest.json" />
 </head>
 
 <body>
-    <div class="container">
-        <table>
-            <tr>
-                <th colspan="4">
-                    <input type="text"
-                           class="display"
-                           value=""
-                           readonly
-                           placeholder="0" />
-                </th>
-            </tr>
-            <tr>
-                <td><button class="open-par">(</button></td>
-                <td><button class="close-par">)</button></td>
-                <td><button class="delete">Del</button></td>
-                <td><button class="add">+</button></td>
-            </tr>
+      <div class="main">
 
-            <tr>
-                <td><button class="seven">7</button></td>
-                <td><button class="eight">8</button></td>
-                <td><button class="nine">9</button></td>
-                <td><button class="minus">-</button></td>
-            </tr>
-            <tr>
-                <td><button class="four">4</button></td>
-                <td><button class="five">5</button></td>
-                <td><button class="six">6</button></td>
-                <td><button class="multiply">x</button></td>
-            </tr>
-            <tr>
-                <td><button class="one">1</button></td>
-                <td><button class="two">2</button></td>
-                <td><button class="three">3</button></td>
-                <td><button class="divide">÷</button></td>
-            </tr>
-            <tr>
-                <td><button class="dot">.</button></td>
-                <td><button class="zero">0</button></td>
-                <td colspan="2"><button class="equalTo">=</button></td>
-            </tr>
-        </table>
-    </div>
+            <!-- BUTTONS -->
+            <!-- <button onclick="getGenPrice()">Get Gen Price</button>
+      <button onclick="getAccPrice()">Get Acc Price</button> -->
+            <div class="menu-buttons row">
+                  <div class="main-buttons btn-group col-12 col-sm-12 col-md-12 col-lg-4 mb-2"
+                       role="group"
+                       aria-label="Basic example">
+                        <button id="btnStart"
+                                class="btn btn-primary"
+                                onclick="main.startProcess()"><i class="bi bi-play-circle"></i><br>Start</button>
+                        <button id="btnStop"
+                                class="btn btn-primary"
+                                onclick="main.stopProcess()"><i class="bi bi-stop-circle"></i><br>Stop</button>
+                        <button id="btnBuy"
+                                class="btn btn-primary"
+                                onclick="main.instantBuyProcess()"><i class="bi bi-cart-plus"></i><br>Buy</button>
+                        <button id="btnSell"
+                                class="btn btn-primary"
+                                onclick="main.instantSellProcess()"><i class="bi bi-cart-dash"></i><br>Sell</button>
+                        <button id="btnPause"
+                                class="btn btn-primary"
+                                onclick="main.pauseProcess()"><i class="bi bi-pause-circle"></i><br>Pause</button>
+                        <button id="btnResume"
+                                class="btn btn-primary"
+                                onclick="main.resumeProcess()"><i
+                                 class="bi bi-fast-forward-circle"></i><br>Resume</button>
+                  </div>
+
+                  <div class="btn-group  col-12 col-sm-12 col-md-12 col-lg-4 mb-2">
+                        <button type="button"
+                                class="btn btn-warning dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                              Setup
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end  position-fixed">
+                              <li><button id="btnSaveSetup"
+                                            class="dropdown-item"
+                                            onclick="main.saveSetupProcess()"><i class="bi bi-floppy2-fill"></i>Save
+                                          Setup</button>
+                              </li>
+                              <li><button id="btnLoadSetup"
+                                            class="dropdown-item"
+                                            onclick="main.loadSetupProcess()"><i class="bi bi-file-arrow-down"></i>Load
+                                          Setup</button>
+                              </li>
+                              <li><button id="btnLoadReport"
+                                            class="dropdown-item"
+                                            onclick="main.loadReportProcess()"><i class="bi bi-download"></i>Load
+                                          Report</button>
+                              </li>
+                              <!-- <li><button id="btnSaveTrade"
+                                            class="dropdown-item"
+                                            onclick="saveTradeProcess()"><i class="bi bi-floppy2-fill"></i>Save
+                                          Trade</button>
+                              </li>
+                              <li><button id="btnLoadTrade"
+                                            class="dropdown-item"
+                                            onclick="loadTradeProcess()"><i class="bi bi-file-arrow-down"></i>Load
+                                          Trade</button>
+                              </li> -->
+                              <li><button id="btnReadBudgetCoinsInWallet"
+                                            class="dropdown-item"
+                                            onclick="main.readBudgetCoinsInWallet()"><i
+                                             class="bi bi-currency-exchange"></i>Read Budget & Coins from
+                                          Wallet</button>
+                              </li>
+                        </ul>
+                  </div>
+
+                  <div class="btn-group  col-12 col-sm-12 col-md-12 col-lg-4 mb-2">
+                        <button type="button"
+                                class="btn btn-danger dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                              Utils
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end  position-fixed">
+                              <li><button id="btnClearTable"
+                                            class="dropdown-item"
+                                            onclick="main.clearTable()"><i class="bi bi-x-circle"></i>Clear
+                                          Table</button>
+                              </li>
+                              <li><button id="btnExportCSV"
+                                            class="dropdown-item"
+                                            onclick="main.exportAsCSV(generalSetup.coinPair)"><i
+                                             class="bi bi-filetype-csv"></i>Export CSV</button>
+                              </li>
+                              <li><button id="btnSendEMail"
+                                            class="dropdown-item"
+                                            onclick="main.sendEmail()"><i class="bi bi-envelope-arrow-up"></i>Send
+                                          Email</button>
+                              </li>
+                              <!-- <li><button id="btnSendEMail"
+                                            class="dropdown-item"
+                                            onclick="SendGeneralSetup()"><i
+                                             class="bi bi-envelope-arrow-up"></i>SendGeneralSetup</button> -->
+                              <li><button id="btnTheme"
+                                            class="dropdown-item"
+                                            onclick="ThemeHelper.toggleTheme()"><i id="btnThemeIcon"
+                                             class="bi bi-envelope-arrow-up"></i>Toggle
+                                          Theme</button>
+                              </li>
+                        </ul>
+                  </div>
+
+            </div>
+
+            <div id="statusDetails"
+                 class="">
+                  <!-- REAL TIME PRICE -->
+                  <div class="divPriceNow"
+                       onclick="SnackBar.showInfo(this.innerHTML)"
+                       id="redDiv">
+                  </div>
+
+                  <div class="d-flex justify-content-between">
+                        <div class="divApplicationStatusLabel"
+                             id="applicationStatusLabel">Application
+                              Status:&nbsp;&nbsp;
+                        </div>
+                        <div class="divApplicationStatus"
+                             id="appSetup.status">
+                        </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between">
+                        <div class="divApplicationTargetLabel"
+                             id="applicationTargetLabel">Application
+                              Target:&nbsp;&nbsp;
+                        </div>
+                        <div class="divApplicationTarget"
+                             id="appTarget">
+                        </div>
+                  </div>
+
+                  <button class="btn btn-sm form-background"
+                          onclick="main.minimizeCards()">
+                        <i class="bi bi-arrow-down-up"></i>
+                  </button>
+            </div>
+
+            <!-- CONFIGURATION TABLES -->
+            <div class="row p-2 pb-0">
+                  <!-- OVERALL REPORT -->
+                  <div class="col-md-6 col-sm-12 col-lg p-1">
+                        <div class="card maximized-card">
+                              <div class="card-body pt-2">
+                                    <div class="d-flex justify-content-between">
+                                          <h6 class="card-title">⚖️ Overall Report</h6>
+                                          <button class="btn btn-sm form-background"
+                                                  onclick="main.minimizeCard(this)">
+                                                <i class="bi bi-arrow-down-up"></i>
+                                          </button>
+                                    </div>
+                                    <div class="card-text">
+                                          <input type="hidden"
+                                                 id="overallReport.id"
+                                                 class="form-control input-xs" />
+                                          <input type="hidden"
+                                                 id="overallReport.priceNow"
+                                                 class="form-control input-xs" />
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Budget Available /
+                                                      Total Profit</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.budgetAvailable"
+                                                             disabled
+                                                             class="form-control input-xs" /><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                                <div class="col-sm-3 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.budgetDifference"
+                                                             disabled
+                                                             class="form-control input-xs" /><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Total Coins in Wallet</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.totalCoins"
+                                                             disabled
+                                                             class="form-control input-xs"><span
+                                                            class="generalSetup.coin"></span>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label"
+                                                       id="overallReport.totalTradeSpentLabel">Total Traded / Last Trade
+                                                      Spent</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.totalTradeSpent"
+                                                             disabled
+                                                             class="form-control input-xs" /><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                                <div class="col-sm-3 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.lastTradeSpent"
+                                                             disabled
+                                                             class="form-control input-xs" /><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Total Fee / Last Trade
+                                                      Fee</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.totalFeePaid"
+                                                             disabled
+                                                             class="form-control input-xs" /><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                                <div class="col-sm-3 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.lastTradeFeePaid"
+                                                             disabled
+                                                             class="form-control input-xs" /><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                          </div>
+
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label"
+                                                       id="overallReport.priceLastBuyLabel">Last Buy Price /
+                                                      Change</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.priceLastBuy"
+                                                             disabled
+                                                             class="form-control input-xs"><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                                <div class="col-sm-3 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.priceChangeLastBuy"
+                                                             disabled
+                                                             class="form-control input-xs"> %
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Average Buy Price /
+                                                      Change</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.priceAverage"
+                                                             disabled
+                                                             class="form-control input-xs"><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                                <div class="col-sm-3 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.priceChangeAveragePrice"
+                                                             disabled
+                                                             class="form-control input-xs"> %
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label"
+                                                       id="overallReport.sellTargetPriceLabel">Sell Target Price /
+                                                      Unrealised Gain</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.sellTargetPrice"
+                                                             disabled
+                                                             class="form-control input-xs"><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                                <div class="col-sm-3 d-flex">
+                                                      <input type="number"
+                                                             id="overallReport.unrealisedGain"
+                                                             disabled
+                                                             class="form-control input-xs"><span
+                                                            class="generalSetup.currency"></span>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Buy 1 / 2 / 3 & Wait
+                                                      Counters</label>
+                                                <div class="col">
+                                                      <input type="number"
+                                                             id="overallReport.roundCounterBuy1"
+                                                             disabled
+                                                             class="form-control input-xs">
+                                                </div>
+                                                <div class="col">
+                                                      <input type="number"
+                                                             id="overallReport.roundCounterBuy2"
+                                                             disabled
+                                                             class="form-control input-xs">
+                                                </div>
+                                                <div class="col">
+                                                      <input type="number"
+                                                             id="overallReport.roundCounterBuy3"
+                                                             disabled
+                                                             class="form-control input-xs">
+                                                </div>
+                                                <div class="col">
+                                                      <input type="number"
+                                                             id="overallReport.waitRoundsAfterSellCounter"
+                                                             disabled
+                                                             class="form-control input-xs">
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- General Setup -->
+                  <div class="col-md-6 col-sm-12 col-lg p-1">
+                        <div class="card maximized-card"
+                             style="height: 100%;">
+                              <div class="card-body pt-2">
+                                    <div class="d-flex justify-content-between">
+                                          <h6 class="card-title">⚙️ General Setup</h6>
+                                          <button class="btn btn-sm form-background"
+                                                  onclick="main.minimizeCard(this)">
+                                                <i class="bi bi-arrow-down-up"></i>
+                                          </button>
+                                    </div>
+                                    <div class="card-text">
+                                          <div class="row">
+                                                <input type="hidden"
+                                                       id="generalSetup.coin"
+                                                       class="form-control input-xs" />
+                                                <input type="hidden"
+                                                       id="generalSetup.currency"
+                                                       class="form-control input-xs" />
+                                                <input type="hidden"
+                                                       id="generalSetup.id"
+                                                       class="form-control input-xs" />
+                                                <label class="col-sm-5 col-form-label">Simulation ON</label>
+                                                <div class="col">
+                                                      <select width="w-100"
+                                                              name="generalSetup.simulationON"
+                                                              id="generalSetup.simulationON">
+                                                            <option value=false>No</option>
+                                                            <option value=true>Yes</option>
+                                                      </select>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Coin Pair</label>
+                                                <div class="col">
+                                                      <select class="w-100"
+                                                              name="generalSetup.coinPair"
+                                                              id="generalSetup.coinPair">
+                                                      </select>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Price Refresh Rate</label>
+                                                <div class="col-sm-7 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.priceRefreshRate"
+                                                             step="1"
+                                                             min="0"
+                                                             max="86400"
+                                                             class="form-control input-xs" /> sec
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Budget Start / Coins Start
+                                                      (Ignored)</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.budgetStart"
+                                                             step="0.01"
+                                                             min="1"
+                                                             max="100000"
+                                                             class="form-control input-xs" />
+                                                      <span class="generalSetup.currency"></span>
+                                                </div>
+                                                <div class="col-sm-3 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.coinsStart"
+                                                             step="0.01"
+                                                             min="0"
+                                                             max="10000"
+                                                             class="form-control input-xs" />
+                                                      <span class="generalSetup.coin"></span>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Budget Minimum / Fee</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.budgetMin"
+                                                             step="0.01"
+                                                             min="1"
+                                                             max="100000"
+                                                             class="form-control input-xs" />
+                                                      <span class="generalSetup.currency"></span>
+                                                </div>
+                                                <div class="col-sm-3 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.fee"
+                                                             step="0.001"
+                                                             min="0"
+                                                             max="100"
+                                                             class="form-control input-xs"> %
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Instant Buy Amount</label>
+                                                <div class="col-3 col-lg-4 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.instantBuyAmountPercentage"
+                                                             step="0.01"
+                                                             min="1"
+                                                             max="100"
+                                                             class="form-control input-xs">
+                                                      %
+                                                </div>
+                                                <div class="col-4 col-lg-3 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.instantBuyAmountFixed"
+                                                             step="0.01"
+                                                             min="0"
+                                                             class="form-control input-xs">
+                                                      <span class="generalSetup.currency"></span>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Instant Sell Amount</label>
+                                                <div class="col-3 col-lg-4 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.instantSellAmountPercentage"
+                                                             step="0.01"
+                                                             min="1"
+                                                             max="100"
+                                                             class="form-control input-xs">
+                                                      %
+                                                </div>
+                                                <div class="col-4 col-lg-3 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.instantSellAmountFixed"
+                                                             step="0.01"
+                                                             min="0"
+                                                             class="form-control input-xs">
+                                                      <span class="generalSetup.coin"></span>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Initial Start Price</label>
+                                                <div class="col-sm-7 d-flex">
+                                                      <input type="number"
+                                                             id="generalSetup.initialStartPrice"
+                                                             step="0.01"
+                                                             min="0.01"
+                                                             max="100000"
+                                                             class="form-control input-xs">
+                                                      <span class="generalSetup.currency"></span>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+                  <!-- SELL SETUP -->
+                  <div class="col-md-6 col-sm-12 col-lg p-1">
+                        <div class="card maximized-card"
+                             style="height: 100%;">
+                              <div class="card-body pt-2">
+                                    <div class="d-flex justify-content-between">
+                                          <h6 class="card-title">📈 Sell Setup</h6>
+                                          <button class="btn btn-sm form-background"
+                                                  onclick="main.minimizeCard(this)">
+                                                <i class="bi bi-arrow-down-up"></i>
+                                          </button>
+                                    </div>
+                                    <div class="card-text">
+                                          <input type="hidden"
+                                                 id="sellSetup.id"
+                                                 class="form-control input-xs" />
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Sell Option</label>
+                                                <div class="col">
+                                                      <select class="w-100"
+                                                              name="sellSetup.option"
+                                                              id="sellSetup.option">
+                                                      </select>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Earn 1 / 2 / 3
+                                                      Percentages</label>
+                                                <div class="col-sm-2 d-flex">
+                                                      <input type="number"
+                                                             id="sellSetup.earn1Percentage"
+                                                             step="0.01"
+                                                             min="0.01"
+                                                             max="100"
+                                                             class="form-control input-xs" /> %
+                                                </div>
+                                                <div class="col-sm-2 d-flex">
+                                                      <input type="number"
+                                                             id="sellSetup.earn2Percentage"
+                                                             step="0.01"
+                                                             min="0.01"
+                                                             max="100"
+                                                             class="form-control input-xs" /> %
+                                                </div>
+                                                <div class="col-sm-2 d-flex">
+                                                      <input type="number"
+                                                             id="sellSetup.earn3Percentage"
+                                                             step="0.01"
+                                                             min="0.01"
+                                                             max="100"
+                                                             class="form-control input-xs" /> %
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Amount Percentage</label>
+                                                <div class="col-sm-7 d-flex">
+                                                      <input type="number"
+                                                             id="sellSetup.amountPercentage"
+                                                             step="0.01"
+                                                             min="0.01"
+                                                             max="100"
+                                                             class="form-control input-xs"> %
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Sell at Peak</label>
+                                                <div class="col">
+                                                      <select class="w-100"
+                                                              name="sellSetup.sellAtPeak"
+                                                              id="sellSetup.sellAtPeak">
+                                                            <option value=false>No</option>
+                                                            <option value=true>Yes</option>
+                                                      </select>
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Peak Max Drop / Wait</label>
+                                                <div class="col-sm-4 d-flex">
+                                                      <input type="number"
+                                                             id="sellSetup.peakMaxDrop"
+                                                             step="0.0001"
+                                                             min="-100"
+                                                             max="0"
+                                                             class="form-control input-xs"> %
+                                                </div>
+                                                <div class="col-sm-3 d-flex">
+                                                      <input type="number"
+                                                             id="sellSetup.peakMaxWait"
+                                                             step="1"
+                                                             min="1"
+                                                             max="1000"
+                                                             class="form-control input-xs"> rounds
+                                                </div>
+                                          </div>
+                                          <div class="row">
+                                                <label class="col-sm-5 col-form-label">Wait Rounds After Sell</label>
+                                                <div class="col-sm-7 d-flex">
+                                                      <input type="number"
+                                                             id="sellSetup.waitRoundsAfterSell"
+                                                             step="1"
+                                                             min="0"
+                                                             max="20000"
+                                                             class="form-control input-xs"> rounds
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+
+            </div>
+
+            <!-- Buy Setup -->
+            <div class="row p-2">
+                  <div class="col p-1">
+                        <div class="card maximized-card"
+                             id=fldBuySetup>
+                              <div class="card-body pt-2">
+                                    <div class="d-flex justify-content-between">
+                                          <h6 class="card-title">🛒 Buy Setup</h6>
+                                          <button class="btn btn-sm form-background"
+                                                  onclick="main.minimizeCard(this)">
+                                                <i class="bi bi-arrow-down-up"></i>
+                                          </button>
+                                    </div>
+                                    <div class="card-text">
+                                          <div class="row">
+                                                <!-- Buy Setup 1 -->
+                                                <fieldset class="col-md-6 col-sm-12 col-lg  me-3 buy-setup-card">
+                                                      <h6 class="card-title text-center">Buy Setup <span
+                                                                  id="buy1Setup.buyPosition"></span></h6>
+                                                      <input type="hidden"
+                                                             id="buy1Setup.id"
+                                                             class="form-control input-xs" />
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Price Drop
+                                                                  Check</label>
+                                                            <div class="col-sm-5 d-flex">
+                                                                  <select class="w-100"
+                                                                          name="buy1Setup.priceDropCheck"
+                                                                          id="buy1Setup.priceDropCheck">
+                                                                  </select>
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Price Drop
+                                                                  Percentage / Multiplier</label>
+                                                            <div class="col-sm-3 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy1Setup.priceDropPercentage"
+                                                                         step="0.001"
+                                                                         min="-100"
+                                                                         max="0"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                            <div class="col-sm-2 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy1Setup.roundDropMultiplier"
+                                                                         step="0.001"
+                                                                         min="-100"
+                                                                         max="0"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Max Buy
+                                                                  Rounds</label>
+                                                            <div class="col-sm-5 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy1Setup.maxBuyRounds"
+                                                                         step="1"
+                                                                         min="1"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> rounds
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Amount
+                                                                  Percentage / Multiplier</label>
+                                                            <div class="col-sm-3 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy1Setup.amountPercentage"
+                                                                         step="0.01"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                            <div class="col-sm-2 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy1Setup.roundAmountMultiplier"
+                                                                         step="0.001"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                      </div>
+                                                      <div class="d-flex justify-content-between">
+                                                            <label class="col-sm-2 col-form-label">Amount Fixed</label>
+                                                            <input type="number"
+                                                                   id="buy1Setup.amountFixed1"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2 mb-1" />
+                                                            <input type="number"
+                                                                   id="buy1Setup.amountFixed2"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2" />
+                                                            <input type="number"
+                                                                   id="buy1Setup.amountFixed3"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2" />
+                                                            <input type="number"
+                                                                   id="buy1Setup.amountFixed4"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2" />
+                                                            <input type="number"
+                                                                   id="buy1Setup.amountFixed5"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs" />
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Buy at Bottom</label>
+                                                            <div class="col">
+                                                                  <select class="w-100"
+                                                                          name="buy1Setup.buyAtBottom"
+                                                                          id="buy1Setup.buyAtBottom">
+                                                                        <option value=false>No</option>
+                                                                        <option value=true>Yes</option>
+                                                                  </select>
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Bottom Max Raise /
+                                                                  Wait</label>
+                                                            <div class="col-sm-3 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy1Setup.bottomMaxRaise"
+                                                                         step="0.0001"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                            <div class="col-sm-2 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy1Setup.bottomMaxWait"
+                                                                         step="1"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> rounds
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+
+                                                      </div>
+                                                </fieldset>
+                                                <!-- Buy Setup 2 -->
+                                                <fieldset class="col-md-6 col-sm-12 col-lg   me-3  buy-setup-card">
+                                                      <h6 class="card-title text-center">Buy Setup <span
+                                                                  id="buy2Setup.buyPosition"></span></h6>
+                                                      <input type="hidden"
+                                                             id="buy2Setup.id"
+                                                             class="form-control input-xs" />
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Price Drop
+                                                                  Check</label>
+                                                            <div class="col-sm-5 d-flex">
+                                                                  <select class="w-100"
+                                                                          name="buy2Setup.priceDropCheck"
+                                                                          id="buy2Setup.priceDropCheck">
+                                                                  </select>
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Price Drop Percentage
+                                                                  / Multiplier</label>
+                                                            <div class="col-sm-3 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy2Setup.priceDropPercentage"
+                                                                         step="0.001"
+                                                                         min="-100"
+                                                                         max="0"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                            <div class="col-sm-2 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy2Setup.roundDropMultiplier"
+                                                                         step="0.001"
+                                                                         min="-100"
+                                                                         max="0"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Max Buy
+                                                                  Rounds</label>
+                                                            <div class="col-sm-5 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy2Setup.maxBuyRounds"
+                                                                         step="1"
+                                                                         min="1"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> rounds
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Amount Percentage /
+                                                                  Multiplier</label>
+                                                            <div class="col-sm-3 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy2Setup.amountPercentage"
+                                                                         step="0.01"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                            <div class="col-sm-2 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy2Setup.roundAmountMultiplier"
+                                                                         step="0.01"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                      </div>
+                                                      <div class="d-flex justify-content-between">
+                                                            <label class="col-sm-2 col-form-label">Amount Fixed</label>
+                                                            <input type="number"
+                                                                   id="buy2Setup.amountFixed1"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2 mb-1" />
+                                                            <input type="number"
+                                                                   id="buy2Setup.amountFixed2"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2" />
+                                                            <input type="number"
+                                                                   id="buy2Setup.amountFixed3"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2" />
+                                                            <input type="number"
+                                                                   id="buy2Setup.amountFixed4"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2" />
+                                                            <input type="number"
+                                                                   id="buy2Setup.amountFixed5"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs" />
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Buy at Bottom</label>
+                                                            <div class="col">
+                                                                  <select class="w-100"
+                                                                          name="buy2Setup.buyAtBottom"
+                                                                          id="buy2Setup.buyAtBottom">
+                                                                        <option value=false>No</option>
+                                                                        <option value=true>Yes</option>
+                                                                  </select>
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Bottom Max Raise /
+                                                                  Wait</label>
+                                                            <div class="col-sm-3 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy2Setup.bottomMaxRaise"
+                                                                         step="0.0001"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                            <div class="col-sm-2 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy2Setup.bottomMaxWait"
+                                                                         step="1"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> rounds
+                                                            </div>
+                                                      </div>
+                                                </fieldset>
+                                                <!-- Buy Setup 3 -->
+                                                <fieldset class="col-md-6 col-sm-12 col-lg   buy-setup-card">
+                                                      <h6 class="card-title text-center">Buy Setup <span
+                                                                  id="buy3Setup.buyPosition"></span></h6>
+                                                      <input type="hidden"
+                                                             id="buy3Setup.id"
+                                                             class="form-control input-xs" />
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Price Drop
+                                                                  Check</label>
+                                                            <div class="col-sm-5 d-flex">
+                                                                  <select class="w-100"
+                                                                          name="buy3Setup.priceDropCheck"
+                                                                          id="buy3Setup.priceDropCheck">
+                                                                  </select>
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Price Drop Percentage
+                                                                  / Multiplier</label>
+                                                            <div class="col-sm-3 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy3Setup.priceDropPercentage"
+                                                                         step="0.001"
+                                                                         min="-100"
+                                                                         max="0"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                            <div class="col-sm-2 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy3Setup.roundDropMultiplier"
+                                                                         step="0.001"
+                                                                         min="-100"
+                                                                         max="0"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Max Buy
+                                                                  Rounds</label>
+                                                            <div class="col-sm-5 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy3Setup.maxBuyRounds"
+                                                                         step="1"
+                                                                         min="1"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> rounds
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Amount Percentage /
+                                                                  Multiplier</label>
+                                                            <div class="col-sm-3 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy3Setup.amountPercentage"
+                                                                         step="0.01"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                            <div class="col-sm-2 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy3Setup.roundAmountMultiplier"
+                                                                         step="0.01"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                      </div>
+                                                      <div class="d-flex justify-content-between">
+                                                            <label class="col-sm-2 col-form-label">Amount Fixed</label>
+                                                            <input type="number"
+                                                                   id="buy3Setup.amountFixed1"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2 mb-1" />
+                                                            <input type="number"
+                                                                   id="buy3Setup.amountFixed2"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2" />
+                                                            <input type="number"
+                                                                   id="buy3Setup.amountFixed3"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2" />
+                                                            <input type="number"
+                                                                   id="buy3Setup.amountFixed4"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs me-2" />
+                                                            <input type="number"
+                                                                   id="buy3Setup.amountFixed5"
+                                                                   step="0.1"
+                                                                   min="0"
+                                                                   class="form-control input-xs" />
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Buy at Bottom</label>
+                                                            <div class="col">
+                                                                  <select class="w-100"
+                                                                          name="buy3Setup.buyAtBottom"
+                                                                          id="buy3Setup.buyAtBottom">
+                                                                        <option value=false>No</option>
+                                                                        <option value=true>Yes</option>
+                                                                  </select>
+                                                            </div>
+                                                      </div>
+                                                      <div class="row">
+                                                            <label class="col-sm-7 col-form-label">Bottom Max Raise /
+                                                                  Wait</label>
+                                                            <div class="col-sm-3 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy3Setup.bottomMaxRaise"
+                                                                         step="0.0001"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> %
+                                                            </div>
+                                                            <div class="col-sm-2 d-flex">
+                                                                  <input type="number"
+                                                                         id="buy3Setup.bottomMaxWait"
+                                                                         step="1"
+                                                                         min="0"
+                                                                         max="100"
+                                                                         class="form-control input-xs" /> rounds
+                                                            </div>
+                                                      </div>
+                                                </fieldset>
+                                          </div>
+
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <!-- Trading History -->
+            <div class="row p-2">
+                  <fieldset id="fldTradingHistory"
+                            class="overflow-auto p-0">
+                        <legend id="lgdTradingHistory"
+                                align="center">📜 Trading History</legend>
+                        <div class="d-flex justify-content-between">
+                              <span>
+                                    <label>From : </label>
+                                    <input id="tradeHistoryFromDateTime"
+                                           type="datetime-local"
+                                           value=""
+                                           min="2022-06-07T00:00"
+                                           max="2030-06-14T00:00"
+                                           onchange="main.tradeHistoryLatestRowsChange()" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label>To : </label>
+                                    <input id="tradeHistoryToDateTime"
+                                           type="datetime-local"
+                                           value=""
+                                           min="2022-06-07T00:00"
+                                           max="2030-06-14T00:00"
+                                           onchange="main.tradeHistoryLatestRowsChange()" />
+                              </span>
+
+                              <span class="d-flex justify-content-between">
+                                    <span>
+                                          <label>Latest&nbsp;:&nbsp;&nbsp;&nbsp;</label>
+                                          <select onchange="main.tradeHistoryLatestRowsChange()"
+                                                  id="tradeHistoryLatestRowNo">
+                                                <option value=1>1</option>
+                                                <option value=10>10</option>
+                                                <option value=30>30</option>
+                                                <option value=50>50</option>
+                                                <option value=100>100</option>
+                                          </select>&nbsp;rows
+                                    </span>
+                                    <span>
+                                          <label class="container">Hide N/A
+                                                <input id="tradeHistoryHideNA"
+                                                       type="checkbox"
+                                                       onchange="main.tradeHistoryLatestRowsChange()">
+                                          </label>
+                                    </span>
+                                    <span>
+                                          <label class="container">Hide B/P
+                                                <input id="tradeHistoryHideBP"
+                                                       type="checkbox"
+                                                       onchange="main.tradeHistoryLatestRowsChange()">
+                                          </label>&nbsp;
+                                    </span>
+                              </span>
+                        </div>
+                        <div class="tableFixHead w-100">
+                              <table id="orderHistoryTable"
+                                     class="table-custom w-100"></table>
+                        </div>
+                  </fieldset>
+            </div>
+
+            <div id="snackbar-container"
+                 class="snackbar"></div>
+      </div>
+      <div class="footer"></div>
 </body>
+<script type="module">
+      import Main from './main.js';
+      import SnackBar from './framework/snack-bar.js';
+
+      const main = new Main();
+      window.main = main;
+      window.SnackBar = SnackBar;
+
+      document.querySelector('.footer').innerHTML = `NeuroN ® ${new Date().getFullYear()}`;
+</script>
 
 </html>
