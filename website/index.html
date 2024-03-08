@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+          content="building a progressive web app" />
+    <meta name="author"
+          content="neb1 neuron" />
+    <title>Progressive Web App CALCULATOR</title>
+    <link rel="stylesheet"
+          href="style.css" />
+    <script src="main.js"
+            defer></script>
+    <link rel="manifest"
+          href="manifest.json" />
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <th colspan="4">
+                    <input type="text"
+                           class="display"
+                           value=""
+                           readonly
+                           placeholder="0" />
+                </th>
+            </tr>
+            <tr>
+                <td><button class="open-par">(</button></td>
+                <td><button class="close-par">)</button></td>
+                <td><button class="delete">Del</button></td>
+                <td><button class="add">+</button></td>
+            </tr>
+
+            <tr>
+                <td><button class="seven">7</button></td>
+                <td><button class="eight">8</button></td>
+                <td><button class="nine">9</button></td>
+                <td><button class="minus">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="four">4</button></td>
+                <td><button class="five">5</button></td>
+                <td><button class="six">6</button></td>
+                <td><button class="multiply">x</button></td>
+            </tr>
+            <tr>
+                <td><button class="one">1</button></td>
+                <td><button class="two">2</button></td>
+                <td><button class="three">3</button></td>
+                <td><button class="divide">÷</button></td>
+            </tr>
+            <tr>
+                <td><button class="dot">.</button></td>
+                <td><button class="zero">0</button></td>
+                <td colspan="2"><button class="equalTo">=</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
