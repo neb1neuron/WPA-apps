@@ -1112,4 +1112,11 @@
       document.querySelector('.footer').innerHTML = `NeuroN ® ${new Date().getFullYear()}`;
 </script>
 
+<script>
+      navigator.serviceWorker.register("sw.js").then(swRegistry => {
+            swReg = swRegistry;
+            return swRegistry.pushManager.getSubscription().then(/* ... */);
+      });
+</script>
+
 </html>

@@ -2,6 +2,8 @@ const PORT_SERVER = 8501;
 const maxNumberOfRows = 44640;    // Trade History - Maximum number or rows allowed in Trade History Array - used in CSV export
 const priceFixedDecimals = 2;
 
+let swReg;
+
 let generalSetup = {
     id: 0,
     simulationON: true,                 // Simulation ON Flag

@@ -20,7 +20,9 @@ export class NotificationHelper {
             body: notifBody,
             icon: './images/icons/icon-144x144.png',
         };
-        new Notification(notifTitle, options);
+
+        swReg.showNotification(notifTitle, options);
+        // new Notification(notifTitle, options);
         setTimeout(this.priceNotification, 30000);
     }
 }
