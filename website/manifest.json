@@ -2,7 +2,7 @@
     "name": "botu'",
     "short_name": "botu'",
     "theme_color": "#fff",
-    "background_color": "#fff",
+    "background_color": "#262525",
     "display": "standalone",
     "orientation": "any",
     "scope": "/",
