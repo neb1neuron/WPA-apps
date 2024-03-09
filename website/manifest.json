@@ -3,7 +3,7 @@
     "short_name": "botu'",
     "theme_color": "#fff",
     "background_color": "#262525",
-    "display": "standalone",
+    "display": "fullscreen",
     "orientation": "any",
     "scope": "/",
     "start_url": "/index.html",
