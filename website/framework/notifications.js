@@ -31,7 +31,7 @@ export class NotificationHelper {
         const options = {
             body: notifBody,
             icon: './images/icons/icon-144x144.png',
-            badge: './images/icons/icon-96x96.png',
+            badge: './images/icons/badge.png',
             vibrate: [200, 100, 200, 100, 200, 100, 200]
         };
 
