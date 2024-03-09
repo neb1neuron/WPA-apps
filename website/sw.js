@@ -1,4 +1,4 @@
-const cacheName = "calculator v2.0.1"; //the name of our cache
+const cacheName = "calculator v2.0.2"; //the name of our cache
 const cacheAsset = ["index.html", "style.css", "main.js"]; //this is the asset that we want to cache
 
 self.addEventListener("install", (e) => {
