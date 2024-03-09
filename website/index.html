@@ -142,6 +142,11 @@
                                              class="bi bi-envelope-arrow-up"></i>Toggle
                                           Theme</button>
                               </li>
+                              <li><button id="btnNotifications"
+                                            class="dropdown-item"
+                                            onclick="NotificationHelper.notificationPermissions()"><i id="btnThemeIcon"
+                                             class="bi bi-bell"></i>Notifications</button>
+                              </li>
                         </ul>
                   </div>
 
@@ -155,24 +160,24 @@
                        id="redDiv">
                   </div>
 
-                  <div class="d-flex justify-content-between">
-                        <div class="divApplicationStatusLabel"
-                             id="applicationStatusLabel">Application
+                  <div class="">
+                        <span class="divApplicationStatusLabel"
+                              id="applicationStatusLabel">Application
                               Status:&nbsp;&nbsp;
-                        </div>
-                        <div class="divApplicationStatus"
-                             id="appSetup.status">
-                        </div>
+                        </span>
+                        <span class="divApplicationStatus"
+                              id="appSetup.status">
+                        </span>
                   </div>
 
-                  <div class="d-flex justify-content-between">
-                        <div class="divApplicationTargetLabel"
-                             id="applicationTargetLabel">Application
+                  <div class="">
+                        <span class="divApplicationTargetLabel"
+                              id="applicationTargetLabel">Application
                               Target:&nbsp;&nbsp;
-                        </div>
-                        <div class="divApplicationTarget"
-                             id="appTarget">
-                        </div>
+                        </span>
+                        <span class="divApplicationTarget"
+                              id="appTarget">
+                        </span>
                   </div>
 
                   <button class="btn btn-sm form-background"

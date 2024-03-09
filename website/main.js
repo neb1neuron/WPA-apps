@@ -2,12 +2,14 @@ import ApplicationService from './services/applicationService.js'
 import SnackBar from './framework/snack-bar.js';
 import { ThemeHelper } from './framework/theme.js';
 import { io } from './framework/socket.io.esm.min.js';
+import { NotificationHelper } from './framework/notifications.js';
 
 let myInterval;
-const messageClient = io(`http://localhost:${PORT_SERVER}`); // connect to messageServer
+// const messageClient = io(`http://localhost:${PORT_SERVER}`); // connect to messageServer
 
 export default class Main {
     themeHelper = ThemeHelper;
+    notificationHelper = NotificationHelper;
 
     dateNow = new Date().toISOString().slice(0, 10);
     date10YearsAgo = new Date();
@@ -30,55 +32,56 @@ export default class Main {
         this.htmlReadySetup();
         this.showPrice(generalSetup.coinPair);
         window.ThemeHelper = ThemeHelper;
+        window.NotificationHelper = NotificationHelper;
         ThemeHelper.setDarkTheme();
 
-        messageClient.emit('client-connection', { client: 'ceapa' });
+        // messageClient.emit('client-connection', { client: 'ceapa' });
 
-        messageClient.on('connection-status', (message) => {
-            console.log('connection status from server', message);
-            if (message.isConnected) {
-                SnackBar.showSuccess('Connected to message server');
-            } else {
-                SnackBar.showError('Could not connect to message server!');
-            }
-        });
+        // messageClient.on('connection-status', (message) => {
+        //     console.log('connection status from server', message);
+        //     if (message.isConnected) {
+        //         SnackBar.showSuccess('Connected to message server');
+        //     } else {
+        //         SnackBar.showError('Could not connect to message server!');
+        //     }
+        // });
 
-        messageClient.on('message', (message) => {
-            // console.log('message from server', message);
-        });
+        // messageClient.on('message', (message) => {
+        //     // console.log('message from server', message);
+        // });
 
-        messageClient.on('tradeHistory', (message) => {
-            tradeHistoryList.push(message);                 // HERE is there any risk of overfilling this param?
-            this.addRowToTradingHistoryTable(message);
-        });
+        // messageClient.on('tradeHistory', (message) => {
+        //     tradeHistoryList.push(message);                 // HERE is there any risk of overfilling this param?
+        //     this.addRowToTradingHistoryTable(message);
+        // });
 
-        messageClient.on('overallReport', (message) => {
+        // messageClient.on('overallReport', (message) => {
 
-            overallReport = message;
+        //     overallReport = message;
 
-            overallReport.priceChangeAveragePrice = overallReport.priceChangeAveragePrice * 100;
-            overallReport.priceChangeLastBuy = overallReport.priceChangeLastBuy * 100;
+        //     overallReport.priceChangeAveragePrice = overallReport.priceChangeAveragePrice * 100;
+        //     overallReport.priceChangeLastBuy = overallReport.priceChangeLastBuy * 100;
 
-            overallReportForm = FormHelper.setupForm(overallReport, 'overallReport');
+        //     overallReportForm = FormHelper.setupForm(overallReport, 'overallReport');
 
-            this.formatOverallReport();
+        //     this.formatOverallReport();
 
-            this.formatBuyFixedAmountBox();
-        });
+        //     this.formatBuyFixedAmountBox();
+        // });
 
-        messageClient.on('appSetup', (message) => {
+        // messageClient.on('appSetup', (message) => {
 
-            appSetup = message;
+        //     appSetup = message;
 
-            if (appSetup.lowBudgetEmailSent) {
-                if (appSetup.status === appStatusEnum.online) { this.setAppStatus(appStatusEnum.onlineLowBudget, appStatusEnum.online); }
-                else if (appSetup.status === appStatusEnum.simulation) { this.setAppStatus(appStatusEnum.simulationLowBudget, appStatusEnum.simulation); }
-            }
-            else {
-                if (appSetup.status === appStatusEnum.onlineLowBudget) { this.setAppStatus(appStatusEnum.online, appStatusEnum.online); }
-                else if (appSetup.status === appStatusEnum.simulationLowBudget) { this.setAppStatus(appStatusEnum.simulation, appStatusEnum.simulation); }
-            }
-        });
+        //     if (appSetup.lowBudgetEmailSent) {
+        //         if (appSetup.status === appStatusEnum.online) { this.setAppStatus(appStatusEnum.onlineLowBudget, appStatusEnum.online); }
+        //         else if (appSetup.status === appStatusEnum.simulation) { this.setAppStatus(appStatusEnum.simulationLowBudget, appStatusEnum.simulation); }
+        //     }
+        //     else {
+        //         if (appSetup.status === appStatusEnum.onlineLowBudget) { this.setAppStatus(appStatusEnum.online, appStatusEnum.online); }
+        //         else if (appSetup.status === appStatusEnum.simulationLowBudget) { this.setAppStatus(appStatusEnum.simulation, appStatusEnum.simulation); }
+        //     }
+        // });
     }
 
     async showPrice(gCoinPair) {
