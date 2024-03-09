@@ -3,7 +3,7 @@ export default class ApplicationService {
         let xPriceNow;
 
         // try {
-        const response = await fetch(`http://localhost:${PORT_SERVER}/v1/trading/get-PriceNow?gCoinPair=${gCoinPair.toString() || 'SOLUSDT'}`);
+        const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${gCoinPair.toUpperCase() || 'SOLUSDT'}`);
         const body = await response.json();
 
         xPriceNow = Number(body);
