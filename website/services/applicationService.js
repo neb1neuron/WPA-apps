@@ -6,7 +6,7 @@ export default class ApplicationService {
         const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${gCoinPair.toUpperCase() || 'SOLUSDT'}`);
         const body = await response.json();
 
-        xPriceNow = Number(body);
+        xPriceNow = Number(body.price);
         xPriceNow = Number(xPriceNow.toFixed(priceFixedDecimals));
         // }
         // catch (error) {
