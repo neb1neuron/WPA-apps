@@ -38,3 +38,38 @@ self.addEventListener("fetch", (e) => {
     //checking if the live site is avaialble and if not, responsd with the cache site
     e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
 });
+
+self.addEventListener("push", (e) => {
+    const data = e.data.json();
+    console.log(`push received: ${data}`);
+
+    const notifTitle = `🤖 Botu\'`;
+    const options = {
+        body: data,
+        icon: './images/icons/icon-144x144.png',
+        badge: './images/icons/icon-96x96.png',
+        vibrate: [200, 100, 200, 100, 200, 100, 200]
+    };
+
+    self.registration.showNotification(notifTitle, options);
+});
+
+self.onnotificationclick = (event) => {
+    console.log("On notification click: ", event.notification.tag);
+    event.notification.close();
+
+    // This looks to see if the current is already open and
+    // focuses if it is
+    event.waitUntil(
+        clients
+            .matchAll({
+                type: "window",
+            })
+            .then((clientList) => {
+                for (const client of clientList) {
+                    if (client.url === "/" && "focus" in client) return client.focus();
+                }
+                if (clients.openWindow) return clients.openWindow("/");
+            }),
+    );
+};
