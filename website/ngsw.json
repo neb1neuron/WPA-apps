@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1710529341917,
+  "timestamp": 1710532703707,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -36,11 +36,13 @@
         "/assets/icons/icon-144x144.png",
         "/assets/icons/icon-152x152.png",
         "/assets/icons/icon-192x192.png",
-        "/assets/icons/icon-348x348.png",
+        "/assets/icons/icon-384x384.png",
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
         "/assets/icons/icon-96x96.png",
-        "/assets/noise.svg"
+        "/assets/noise.svg",
+        "/assets/screenshot-desktop.png",
+        "/assets/screenshot-mobile.png"
       ],
       "patterns": []
     }
@@ -55,15 +57,17 @@
     "/assets/icons/icon-144x144.png": "6bc774264231248c5b2f1038b76bf3a2b10f7e3c",
     "/assets/icons/icon-152x152.png": "a9e5d84b363d1940181c770418e386b0eb7ca00c",
     "/assets/icons/icon-192x192.png": "31f75c2827eb7fd3aa08147367f1f9c4fa9b026e",
-    "/assets/icons/icon-348x348.png": "e854b00c394456d05295aec1d4eed751dd081af8",
+    "/assets/icons/icon-384x384.png": "0f3850943abb46d3fc5019987858254bfd82442c",
     "/assets/icons/icon-512x512.png": "00a6ece599bb5107a25d13897b101742369c2140",
     "/assets/icons/icon-72x72.png": "f918aec9e47cbb80562ea92eeb03bb10ac78619f",
     "/assets/icons/icon-96x96.png": "08e31e78adcec785bed091f09eecf55e4edfe9ba",
     "/assets/noise.svg": "81c71823c15307422f97955431bf6eef5b49247d",
+    "/assets/screenshot-desktop.png": "d018009d1de92cd4575bb91a3707f6acf8c05f2c",
+    "/assets/screenshot-mobile.png": "605dfddd48c175f6ae4687455232a1778dd45b41",
     "/favicon.ico": "bbf013859a6cfab1953723e4721be5e68748a3b7",
     "/index.html": "cd5b1909f298bfe070d92f3a9cb3a32e2587f4f8",
     "/main-HU66GWI5.js": "b567122191c6318d21b66afaa6bf346afc347b3d",
-    "/manifest.webmanifest": "52310b1a4488ae89ba64b63b66f1f6789f094a47",
+    "/manifest.webmanifest": "a0489dcdae7fd2fc8b10eb28a4a9cb29be4cd756",
     "/polyfills-BJX5WH5B.js": "72a5a6861724328de149c14045355281bd3c8266",
     "/styles-2HKFQ7CP.css": "3121071715852d7979dd3f019f8f1cdfa91008a1"
   },

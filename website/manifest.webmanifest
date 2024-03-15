@@ -47,5 +47,21 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshot-mobile.png",
+      "sizes": "616x1370",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "botu"
+    },
+    {
+      "src": "assets/screenshot-desktop.png",
+      "sizes": "1524x962",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "botu"
+    }
   ]
 }
