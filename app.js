@@ -11,4 +11,8 @@ app.use(express.static('website'));
 
 app.get('/website');
 
+app.use((req, res, next) => {
+    res.status(404).redirect('/');
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}!`));
