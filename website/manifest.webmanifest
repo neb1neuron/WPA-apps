@@ -1,8 +1,8 @@
 {
   "name": "botu'",
   "short_name": "botu'",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#35384f",
+  "background_color": "#35384f",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
