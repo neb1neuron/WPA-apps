@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1711387454271,
+  "timestamp": 1711398607606,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,6 +11,8 @@
         "ignoreVary": true
       },
       "urls": [
+        "/login",
+        "/dashboard",
         "/favicon.ico",
         "/index.html",
         "/main-7WO543JB.js",
@@ -18,7 +20,7 @@
         "/polyfills-BJX5WH5B.js",
         "/styles-5UC5IOAS.css"
       ],
-      "patterns": []
+      "patterns": ["/*.css", "/*.js"]
     },
     {
       "name": "assets",
@@ -28,6 +30,9 @@
         "ignoreVary": true
       },
       "urls": [
+        "/index.html",
+        "/manifest.webmanifest",
+        "/ngsw.json",
         "/assets/botu'-logo-galben.svg",
         "/assets/botu'-logo-galben2.png",
         "/assets/botu'-logo-galben2.svg",
