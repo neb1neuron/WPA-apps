@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1711398607606,
+  "timestamp": 1711575319509,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,16 +11,14 @@
         "ignoreVary": true
       },
       "urls": [
-        "/login",
-        "/dashboard",
         "/favicon.ico",
         "/index.html",
-        "/main-7WO543JB.js",
+        "/main-MN7U5QLG.js",
         "/manifest.webmanifest",
         "/polyfills-BJX5WH5B.js",
-        "/styles-5UC5IOAS.css"
+        "/styles-ZGLGG2VN.css"
       ],
-      "patterns": ["/*.css", "/*.js"]
+      "patterns": []
     },
     {
       "name": "assets",
@@ -30,9 +28,6 @@
         "ignoreVary": true
       },
       "urls": [
-        "/index.html",
-        "/manifest.webmanifest",
-        "/ngsw.json",
         "/assets/botu'-logo-galben.svg",
         "/assets/botu'-logo-galben2.png",
         "/assets/botu'-logo-galben2.svg",
@@ -72,13 +67,13 @@
     "/assets/screenshot-desktop.png": "d018009d1de92cd4575bb91a3707f6acf8c05f2c",
     "/assets/screenshot-mobile.png": "605dfddd48c175f6ae4687455232a1778dd45b41",
     "/favicon.ico": "8ed1cf2bcc9bc2edc5e0c54a8e05fb5e9ca75c8c",
-    "/index.html": "ccd5912fa1134a209c9c533dff3ce27344b92048",
-    "/main-7WO543JB.js": "c4f6892a87db981273364b25a8b7e31e4c95a6ef",
+    "/index.html": "d8e80d12c1ee1255ff60fd6f5676c7b02773c555",
+    "/main-MN7U5QLG.js": "248088ca78d0ffbe4ac5cb211f89f80819beec80",
     "/manifest.webmanifest": "ba3886ac1b20fc848c5849d2284d606178f3e5b3",
     "/media/bootstrap-icons-OCU552PF.woff": "d5831fd39baf13aff7626e483b9a089730f18604",
     "/media/bootstrap-icons-X6UQXWUS.woff2": "020c3c6f9280a315e8425d7f92e15bcd0cdda1b2",
     "/polyfills-BJX5WH5B.js": "72a5a6861724328de149c14045355281bd3c8266",
-    "/styles-5UC5IOAS.css": "ae22e22e0e2d9f47d8f1f72ec020aac6965d94f8"
+    "/styles-ZGLGG2VN.css": "80a561ccd958eba1fac3f1054bb722c89c922a43"
   },
   "navigationUrls": [
     {
