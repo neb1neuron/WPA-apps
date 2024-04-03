@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1711623313280,
+  "timestamp": 1712148345216,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,10 +13,10 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main-32GZ34Y7.js",
+        "/main-WYUSEHAU.js",
         "/manifest.webmanifest",
         "/polyfills-BJX5WH5B.js",
-        "/styles-MR54TLPO.css"
+        "/styles-GGCUVUGW.css"
       ],
       "patterns": []
     },
@@ -67,13 +67,13 @@
     "/assets/screenshot-desktop.png": "d018009d1de92cd4575bb91a3707f6acf8c05f2c",
     "/assets/screenshot-mobile.png": "605dfddd48c175f6ae4687455232a1778dd45b41",
     "/favicon.ico": "8ed1cf2bcc9bc2edc5e0c54a8e05fb5e9ca75c8c",
-    "/index.html": "fc1bfbce9840fd4e1ab95564385b38c378b4f993",
-    "/main-32GZ34Y7.js": "c218bf4679b7e6db4b86be70e74b346522cf04f6",
+    "/index.html": "7797000e6a50f8dc8a8eec4ab33a18746226dce5",
+    "/main-WYUSEHAU.js": "7ed0e500a52da0610c04fb54a4d14611dc9799fc",
     "/manifest.webmanifest": "ba3886ac1b20fc848c5849d2284d606178f3e5b3",
     "/media/bootstrap-icons-OCU552PF.woff": "d5831fd39baf13aff7626e483b9a089730f18604",
     "/media/bootstrap-icons-X6UQXWUS.woff2": "020c3c6f9280a315e8425d7f92e15bcd0cdda1b2",
     "/polyfills-BJX5WH5B.js": "72a5a6861724328de149c14045355281bd3c8266",
-    "/styles-MR54TLPO.css": "e71658e15e10b167c0d911b7a2a831c24f1caf2a"
+    "/styles-GGCUVUGW.css": "77b55ef68579757c55962f494b4abd86a12d1aec"
   },
   "navigationUrls": [
     {
